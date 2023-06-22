@@ -1,17 +1,13 @@
-package ru.netology.i18;
+package ru.netology.i18n;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import ru.netology.entity.Country;
-import ru.netology.geo.*;
-import ru.netology.i18n.*;
 
-public class GeoTest {
-
+class LocalizationServiceImplTest {
     LocalizationService test = new LocalizationServiceImpl();
-    GeoService geo = new GeoServiceImpl();
     @Test
-
-    void localizationServiceRusTest(){
+    void localizationServiceRusTest() {
         String expectedRus = "Добро пожаловать";
         String actualRus = test.locale(Country.RUSSIA);
         String actualUsa = test.locale(Country.USA);
@@ -31,22 +27,4 @@ public class GeoTest {
         Assertions.assertEquals(expectedOther, actualUsa);
         Assertions.assertEquals(expectedOther, actualBrazil);
     }
-    @Test
-    void geoServiceImplRusTest(){
-        Country expectedRus = Country.RUSSIA;
-
-        Country actualRus = geo.byIp("172.").getCountry();
-
-        Assertions.assertEquals(expectedRus, actualRus);
-    }
-
-    @Test
-    void geoServiceImplUsaTest(){
-        Country expectedUsa = Country.USA;
-
-        Country actualUsa = geo.byIp("96.").getCountry();
-
-        Assertions.assertEquals(expectedUsa, actualUsa);
-    }
-
 }
